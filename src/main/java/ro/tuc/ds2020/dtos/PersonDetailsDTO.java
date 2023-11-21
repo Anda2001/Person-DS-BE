@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class PersonDetailsDTO {
 
-    private UUID id;
+    private int id;
     @NotNull
     private String name;
     @NotNull
@@ -16,27 +16,41 @@ public class PersonDetailsDTO {
     @AgeLimit(limit = 18)
     private int age;
 
+    @NotNull
+    private String role;
+
+    @NotNull
+    private String email;
+
+    private String password;
+
     public PersonDetailsDTO() {
     }
 
-    public PersonDetailsDTO( String name, String address, int age) {
+    public PersonDetailsDTO( String name, String address, int age, String role, String email, String password) {
         this.name = name;
         this.address = address;
         this.age = age;
+        this.role = role;
+        this.email = email;
+        this.password = password;
     }
 
-    public PersonDetailsDTO(UUID id, String name, String address, int age) {
+    public PersonDetailsDTO(int id, String name, String address, int age, String role, String email, String password) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.age = age;
+        this.role = role;
+        this.email = email;
+        this.password = password;
     }
 
-    public UUID getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -64,6 +78,18 @@ public class PersonDetailsDTO {
         this.age = age;
     }
 
+    public String getRole() {return role;}
+
+    public void setRole(String role) {this.role = role;}
+
+    public String getEmail() {return email;}
+
+    public String getPassword() {return password;}
+
+    public void setEmail(String email) {this.email = email;}
+
+    public void setPassword(String password) {this.password = password;}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -71,11 +97,14 @@ public class PersonDetailsDTO {
         PersonDetailsDTO that = (PersonDetailsDTO) o;
         return age == that.age &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(address, that.address);
+                Objects.equals(address, that.address) &&
+                Objects.equals(role, that.role) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(password, that.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, address, age);
+        return Objects.hash(name, address, age, role, email, password);
     }
 }

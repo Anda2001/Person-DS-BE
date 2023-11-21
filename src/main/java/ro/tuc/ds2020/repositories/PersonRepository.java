@@ -7,9 +7,8 @@ import ro.tuc.ds2020.entities.Person;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
-public interface PersonRepository extends JpaRepository<Person, UUID> {
+public interface PersonRepository extends JpaRepository<Person, Integer> {
 
     /**
      * Example: JPA generate Query by Field
@@ -22,7 +21,8 @@ public interface PersonRepository extends JpaRepository<Person, UUID> {
     @Query(value = "SELECT p " +
             "FROM Person p " +
             "WHERE p.name = :name " +
-            "AND p.age >= 60  ")
+            "AND p.age >= 60  "
+    )
     Optional<Person> findSeniorsByName(@Param("name") String name);
 
 }

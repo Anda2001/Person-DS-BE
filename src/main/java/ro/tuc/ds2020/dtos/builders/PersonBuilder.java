@@ -10,16 +10,17 @@ public class PersonBuilder {
     }
 
     public static PersonDTO toPersonDTO(Person person) {
-        return new PersonDTO(person.getId(), person.getName(), person.getAge());
+        return new PersonDTO(person.getId(), person.getName(), person.getAge(), person.getRole(), person.getAddress(), person.getEmail(), person.getPassword());
     }
 
     public static PersonDetailsDTO toPersonDetailsDTO(Person person) {
-        return new PersonDetailsDTO(person.getId(), person.getName(), person.getAddress(), person.getAge());
+        return new PersonDetailsDTO(person.getId(), person.getName(), person.getAddress(), person.getAge(), person.getRole(), person.getEmail(), person.getPassword());
     }
 
     public static Person toEntity(PersonDetailsDTO personDetailsDTO) {
         return new Person(personDetailsDTO.getName(),
                 personDetailsDTO.getAddress(),
-                personDetailsDTO.getAge());
+                personDetailsDTO.getAge(),
+                personDetailsDTO.getRole(), personDetailsDTO.getEmail(), personDetailsDTO.getPassword());
     }
 }
